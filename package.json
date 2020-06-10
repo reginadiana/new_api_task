@@ -5,7 +5,7 @@
 		"yarn": "1.12.3"
 	}, "scripts": {
 		"build": "yarn --cwd client install && yarn --cwd client build && bundle exec rails s -p 3001",
-		"deploy": "cp -a client/build/. public/ && bundle exec rails s -p 3001",
-		"heroku-postbuild": "yarn build && yarn deploy && bundle exec rails s -p 3001" 
+		"deploy": "cp -a client/build/. public/",
+		"heroku-postbuild": "yarn build && yarn deploy" 
 	}
 }
