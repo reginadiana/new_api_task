@@ -1,0 +1,17 @@
+.col-md-10, .col-md-10 p, .check-task, .trash-al {
+  background-color: white;
+}
+
+.col-md-10 p {
+  margin: auto;
+  padding-left: 2.5%;
+}
+
+.check-task {
+  color: var(--check-task-color);
+}
+
+.trash-alt {
+  color: var(--trash-task-color);
+  margin-left: -50%;
+}
