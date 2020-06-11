@@ -104,11 +104,11 @@ Some resources should be installed before to setting the project
 No terminal, clone o projeto: 
 
 ```
-git clone 
+git clone https://github.com/reginadiana/new_api_task
 ```
 Acess the folder
 ```
-cd 
+cd new_api_task
 ```
 Install the dependencies and prepare the database
 ```
@@ -127,7 +127,7 @@ $ rails server or rails s
 
 ### Backend 
 ```
-$ cd 
+$ cd new_api_task
 $ rspec or bundle exec rspec
 ```
 
@@ -154,7 +154,7 @@ $ rails routes -g tasks
 
 ## License :trident:
 
-The [MIT License]() (MIT)
+The [MIT License](https://github.com/reginadiana/new_api_task/tree/add-license-1) (MIT)
 
 Copyright :copyright: 2020 Task Finisher
 <br/>
