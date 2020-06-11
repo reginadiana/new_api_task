@@ -39,72 +39,52 @@
 ## Description of Project
 
 <p align="justify">
-  The project is 
+  The project is a simple TODO List of tasks. 
 </p>
 
-## Funcionalidades
+## Functionalites
 
-Os **headhunters** (recrutadores) podem: 
+Is possible to do:
 
-:heavy_check_mark: Criar uma conta e uma vaga
+:heavy_check_mark: See all tasks 
 
-:heavy_check_mark: Ver os inscritos em uma vaga
+:heavy_check_mark: Create new tasks
 
-:heavy_check_mark: Escrever comentarios no perfil dos candidatos cadastrados a vaga  
+:heavy_check_mark: Edit a task as done or not 
 
-:heavy_check_mark: Marcar perfis como destaque
+:heavy_check_mark: Delete a task
 
-:heavy_check_mark: Rejeitar perfils mandando um feedback
-
-:heavy_check_mark: Enviar proposta para o perfil
-
-:heavy_check_mark: Receber proposta do candidato 
-
-:heavy_check_mark: Buscar por candidatos a partir do nome ou profissão
-
-:heavy_check_mark: Encerrar as inscrições para uma vaga
-
-Os **candidatos** podem: 
-
-:heavy_check_mark: Criar uma conta 
-
-:heavy_check_mark: Completar o seu perfil
-
-:heavy_check_mark: Buscar por vagas a partir do titulo ou skills requeridas 
-
-:heavy_check_mark: Se inscrever em uma vaga
-
-:heavy_check_mark: Receber feedbacks negativos
-
-:heavy_check_mark: Receber propostas de handhunterss
-
-:heavy_check_mark: Aceitar e rejeitar propostas
+:heavy_check_mark: Delete all tasks
 
 ## Deploy com Heroku 
 
-> https://headhuntersjobs.herokuapp.com/
+> https://test-rails-app-to-do.herokuapp.com/
 
 ## Techs
 
 :bookmark: Ruby on Rails
 
-:bookmark: [I18n](https://guides.rubyonrails.org/i18n.html) 
+:bookmark: React
 
 ## Gems instaladas
 
-:books: [**Devise**](https://github.com/heartcombo/devise) para autenticação de usuários (recrutadores e candidatos)
+:books: [**PG**](https://rubygems.org/gems/pg/versions/0.18.4?locale=pt-BR) to use a database Postgresql 
+
+:books: [**Rack Cors**](https://rubygems.org/gems/rack-cors) to define a way for client web applications that are loaded in one domain to interact with resources in a different domain
+
+:books: [**React Rails**](https://rubygems.org/gems/react-rails/versions/1.7.1?locale=pt-BR) to do a integration betwen rails and react
+
+### To test application
+
+:books: [**SimpleCov**](https://github.com/colszowka/simplecov) para  gerar relatórios referentes a cobertura de testes
 
 :books: [**RSpec**](https://github.com/rspec/rspec-rails) para escrever e executar testes unitários, isto é, de baixo nível 
 
 :books: [**Capybara**](https://github.com/teamcapybara/capybara) para escrever e executar testes de integração, isto é, de alto nível
 
-:books: [**Factory Bot Rails**](https://github.com/thoughtbot/factory_bot_rails) para otimizar a escrita de testes
+## Requirements :package:
 
-:books: [**SimpleCov**](https://github.com/colszowka/simplecov) para  gerar relatórios referentes a cobertura de testes
-
-## Pré-requisitos :package:
-
-Algumas instalações serão necessárias antes de iniciar o projeto. 
+Some resources should be installed before to setting the project
 
 :warning: [Ruby](https://www.ruby-lang.org/pt/documentation/installation/) versão >=2.6.3
 
@@ -118,74 +98,64 @@ Algumas instalações serão necessárias antes de iniciar o projeto.
 
 :warning: [Yarn](https://classic.yarnpkg.com/pt-BR/docs/install/#windows-stable) versão >=1.22.4 
 
-## Configurações
+## Settings
 
-### Iniciando/Configurando banco de dados
-
+### Start Database
 No terminal, clone o projeto: 
 
 ```
-git clone https://github.com/Diana-ops/plataforma-headhunters-treina-dev
+git clone 
 ```
-Entre na pasta
+Acess the folder
 ```
-cd plataforma-headhunters-treina-dev
+cd 
 ```
-Instale as dependencias e prepare o database
+Install the dependencies and prepare the database
 ```
 bin/setup
 ```
 
-## Rodando a aplicação :arrow_forward:
+## Run application :arrow_forward:
 
 ```
 $ rails server or rails s
 ```
 
-> Depois, acesse http://localhost:3000 para ver a aplicação
+> Before, acess http://localhost:3000 to see application
 
-## Casos de Uso :busts_in_silhouette:
+## Run tests :memo:
 
-Alguns candidatos, recrutadores e outros objetos já estão configurados na aplicação e foram criados no arquivo [bin/seeds.rb](https://github.com/Diana-ops/plataforma-headhunters-treina-dev/blob/master/db/seeds.rb).
-
-### Acessando a plataforma como candidato 
-
-```ruby 
-user_a = User.create!(email: 'camila@outlook.com.br', password: '123456')
+### Backend 
 ```
-
-### Acessando a plataforma como recrutador
-```ruby 
-headhunter_a = Headhunter.create!(email: 'lucas22@outlook.com.br', password: '111111')
-```
-
-## Rodando os testes :memo:
-
-```
-$ cd rental-cars-treina-dev-1
+$ cd 
 $ rspec or bundle exec rspec
+```
+
+### Frontend
+```
 ```
 
 ## Database :floppy_disk:
 
-O banco de dados utilizado nesta aplicação foi o [PostgreSQL](https://guides.rubyonrails.org/active_record_postgresql.html). O banco foipreparado com o comando ``` bin/setup ```
+The database used was [PostgreSQL](https://guides.rubyonrails.org/active_record_postgresql.html). He can be setting with command 
+``` bin/setup```. To **restart** data, use the command ```rails db:reset```. 
 
-## Rotas
+JSON with data default:
 
-Para ver as rotas disponíveis na aplicação, execute: 
+> https://test-rails-app-to-do.herokuapp.com/
+
+## Rotes
+
+To se the routes of application, run:
 
 ```
-$ rails routes -g <name of controller>
+$ rails routes -g tasks
 ```
 
-## Resolvendo Problemas :exclamation:
+## License :trident:
 
-Em [issues](https://github.com/Diana-ops/rental-cars-treina-dev-1/issues) foram abertos alguns problemas gerados durante o desenvolvimento desse projeto e como foram resolvidos. 
+The [MIT License]() (MIT)
 
-## Licença :trident:
-
-The [MIT License](https://github.com/Diana-ops/plataforma-headhunters-treina-dev/blob/master/LICENSE) (MIT)
-
-Copyright :copyright: 2020 HandHunters
+Copyright :copyright: 2020 Task Finisher
 <br/>
 <img src="https://badges.frapsoft.com/os/v1/open-source.svg?v=102"/>
