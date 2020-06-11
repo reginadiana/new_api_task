@@ -98,6 +98,10 @@ Some resources should be installed before to setting the project
 
 :warning: [Yarn](https://classic.yarnpkg.com/pt-BR/docs/install/#windows-stable) versão >=1.22.4 
 
+To check version, run:
+```
+$ <name of requirement> -v
+```
 ## Settings
 
 ### Start Database
@@ -140,12 +144,13 @@ $ yarn -cwd client start or yarn start
 
 ### Backend 
 ```
-$ cd 
+$ cd new_api_task
 $ rspec or bundle exec rspec
 ```
 
 ### Frontend
 ```
+comming soon
 ```
 
 ## Database :floppy_disk:
@@ -167,7 +172,7 @@ $ rails routes -g tasks
 
 ## License :trident:
 
-The [MIT License]() (MIT)
+The [MIT License](https://github.com/reginadiana/new_api_task/tree/add-license-1) (MIT)
 
 Copyright :copyright: 2020 Task Finisher
 <br/>
