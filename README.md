@@ -98,11 +98,16 @@ Some resources should be installed before to setting the project
 
 :warning: [Yarn](https://classic.yarnpkg.com/pt-BR/docs/install/#windows-stable) versão >=1.22.4 
 
+To check version, run:
+
+```
+$ <name of requirement> -v 
+```
+
 ## Settings
 
 ### Start Database
-No terminal, clone o projeto: 
-
+In prompt command, clone this repository:
 ```
 git clone https://github.com/reginadiana/new_api_task
 ```
@@ -110,15 +115,31 @@ Acess the folder
 ```
 cd new_api_task
 ```
-Install the dependencies and prepare the database
+Install the dependencies and prepare the database to **backend*
 ```
 bin/setup
 ```
 
+Before, configure the frontend application:
+```
+$ cd client
+$ yarn install
+```
+
 ## Run application :arrow_forward:
 
+### Backend
 ```
-$ rails server or rails s
+$ cd .. # You should be in new_api_task folder
+$ rails s -p 3001
+```
+
+Before, in _other_ prompt command, run:
+
+### Frontend
+```
+$ cd new_api_task/client
+$ yarn --cwd client start
 ```
 
 > Before, acess http://localhost:3000 to see application
@@ -133,6 +154,7 @@ $ rspec or bundle exec rspec
 
 ### Frontend
 ```
+_Comming soon_
 ```
 
 ## Database :floppy_disk:
