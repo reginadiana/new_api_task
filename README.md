@@ -56,7 +56,7 @@ Is possible to do:
 
 :heavy_check_mark: Delete all tasks
 
-## Deploy com Heroku 
+## Deploy with Heroku 
 
 > https://test-rails-app-to-do.herokuapp.com/
 
@@ -66,7 +66,7 @@ Is possible to do:
 
 :bookmark: React
 
-## Gems instaladas
+## Installed Gems
 
 :books: [**PG**](https://rubygems.org/gems/pg/versions/0.18.4?locale=pt-BR) to use a database Postgresql 
 
