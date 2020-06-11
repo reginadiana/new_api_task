@@ -60,6 +60,10 @@ Is possible to do:
 
 > https://test-rails-app-to-do.herokuapp.com/
 
+## Layout
+
+<img src="https://user-images.githubusercontent.com/46378210/84402897-722d9980-abdb-11ea-80ee-7b7de2026744.png" width="400"/>
+
 ## Techs
 
 :bookmark: Ruby on Rails
