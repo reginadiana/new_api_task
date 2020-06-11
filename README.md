@@ -140,6 +140,38 @@ $ yarn -cwd client start or yarn start
 
 > Before, acess http://localhost:3000 to see application
 
+:warning: Attention: The React application is request API from path `https://test-rails-app-to-do.herokuapp.com/tasks`. If you want to **change** to same path local, you can change this path in all components as [example](https://github.com/reginadiana/new_api_task/blob/add-license-1/client/src/components/list/index.js):
+
+Change this code:
+```javascript
+
+// client/scr/component/list
+
+async checkTask(task) {
+    await fetch(`https://test-rails-app-to-do.herokuapp.com/tasks/${task.id}`,
+      {
+        ...
+        },
+        ...
+      }
+     )
+```
+To
+
+```javascript
+
+// client/scr/component/list
+
+async checkTask(task) {
+    await fetch(`https://localhost:3001/tasks/${task.id}`,
+      {
+        ...
+        },
+        ...
+      }
+     )
+```
+
 ## Run tests :memo:
 
 ### Backend 
@@ -160,7 +192,7 @@ The database used was [PostgreSQL](https://guides.rubyonrails.org/active_record_
 
 JSON with data default:
 
-> https://test-rails-app-to-do.herokuapp.com/
+> https://test-rails-app-to-do.herokuapp.com/tasks
 
 ## Rotes
 
