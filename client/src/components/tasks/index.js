@@ -17,7 +17,7 @@ class Tasks extends Component {
      }
      
      async loadTasks() {
-       let response = await fetch(`http://localhost:3001/tasks`);
+       let response = await fetch(`https://test-rails-app-to-do.herokuapp.com/tasks`);
        const tasks = await response.json();
        this.setState({ tasks: tasks });
      }
@@ -29,7 +29,7 @@ class Tasks extends Component {
       deleteAll() {
          if (window.confirm(`Are you sure you want to delete all tasks`)) {
 	     this.state.tasks.map((task) => {
-		fetch(`http://localhost:3001/tasks/${task.id}`, {method: 'DELETE'});
+		fetch(`https://test-rails-app-to-do.herokuapp.com/tasks/${task.id}`, {method: 'DELETE'});
 		this.loadTasks();
              })
         }

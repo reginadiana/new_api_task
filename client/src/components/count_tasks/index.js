@@ -12,7 +12,7 @@ class CountTasks extends Component {
      }
 
        async loadTasks() {
-       let response = await fetch(`http://localhost:3001/tasks`);
+       let response = await fetch(`https://test-rails-app-to-do.herokuapp.com/tasks`);
        const tasks = await response.json();
        this.setState({ tasks: tasks });
 

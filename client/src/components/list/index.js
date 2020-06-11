@@ -8,12 +8,12 @@ class List extends Component {
 
   async deleteTask(task) {
     if (window.confirm(`Are you sure you want to delete: "${task.title}"`)) {
-      await fetch(`http://localhost:3001/tasks/${task.id}`, {method: 'DELETE'});
+      await fetch(`https://test-rails-app-to-do.herokuapp.com/tasks/${task.id}`, {method: 'DELETE'});
         this.props.loadTasks();
       }
     }
   async checkTask(task) {
-    await fetch(`http://localhost:3001/tasks/${task.id}`,
+    await fetch(`https://test-rails-app-to-do.herokuapp.com/tasks/${task.id}`,
       {
         method: 'PUT',
         headers: {
