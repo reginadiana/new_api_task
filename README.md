@@ -154,7 +154,7 @@ $ rspec or bundle exec rspec
 
 ### Frontend
 ```
-_Comming soon_
+Comming soon
 ```
 
 ## Database :floppy_disk:
@@ -164,7 +164,7 @@ The database used was [PostgreSQL](https://guides.rubyonrails.org/active_record_
 
 JSON with data default:
 
-> https://test-rails-app-to-do.herokuapp.com/
+> https://test-rails-app-to-do.herokuapp.com/tasks
 
 ## Rotes
 
