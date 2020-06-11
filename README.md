@@ -3,14 +3,14 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/apm/l/vim-mode?color=green&label=license&logo=license&logoColor=green&style=for-the-badge"/>
   <img src="http://img.shields.io/static/v1?label=Ruby%20On%20Rails%20&message=6.0.2.2&color=red&style=for-the-badge&logo=ruby"/>
   <img src="http://img.shields.io/static/v1?label=REACT&message=FRAMEWORK&color=BLUE&style=for-the-badge&logo=REACT">
-  <img src="http://img.shields.io/static/v1?label=REACT&message=DEPLOY&color=VIOLET&style=for-the-badge&logo=HEROKU">
-  <img src="http://img.shields.io/static/v1?label=TDD&message=FRONTEND%20AND%20BACKEND&color=GREEN&style=for-the-badge&logo=CHECK">
+  <img src="http://img.shields.io/static/v1?label=HEROKU&message=DEPLOY&color=VIOLET&style=for-the-badge&logo=HEROKU">
 </p>
 
 <p align="center">
+  <img src="https://img.shields.io/apm/l/vim-mode?color=green&label=license&logo=license&logoColor=green&style=for-the-badge"/>
+  <img src="http://img.shields.io/static/v1?label=TDD&message=FRONTEND%20AND%20BACKEND&color=GREEN&style=for-the-badge&logo=CHECK">
   <img src="http://img.shields.io/static/v1?label=STATUS&message=IN%20PROGRESSS&color=ORANGE&style=for-the-badge">
 </p>
 
