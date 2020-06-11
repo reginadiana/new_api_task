@@ -101,24 +101,37 @@ Some resources should be installed before to setting the project
 ## Settings
 
 ### Start Database
-No terminal, clone o projeto: 
-
+In prompt command, clone this project:
 ```
-git clone 
+$ git clone https://github.com/reginadiana/new_api_task
 ```
 Acess the folder
 ```
-cd 
+$ cd new_api_task
 ```
-Install the dependencies and prepare the database
+Install the dependencies and prepare the database to **backend**
 ```
-bin/setup
+$ bin/setup
+```
+To setting **frontend**, run:
+```
+$ cd client
+$ yarn install
 ```
 
 ## Run application :arrow_forward:
 
+### Backend
 ```
-$ rails server or rails s
+$ cd .. # You should be in new_api_task folder
+$ rails s -p 3001
+```
+
+### Frontend
+
+```
+$ cd client
+$ yarn -cwd client start or yarn start
 ```
 
 > Before, acess http://localhost:3000 to see application
