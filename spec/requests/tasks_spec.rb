@@ -39,53 +39,54 @@ RSpec.describe "Tasks", type: :request do
     end
   end
   describe "PUT /task" do
-    it "returns status code 200" do
-      task = create(:task)
-      task_attributes = attributes_for(:task)
-      put "/tasks/#{task.id}", params: task_attributes
-      expect(response).to have http_status(200)
-    end
+    context "task exist and" do
+      let(:task) { create(:task) }
+      let(:task_attributes) { attributes_for(:task) }
 
-    it "updates the task" do
-      task = create(:task)
-      task_attributes = attributes_for(:task)
-      put "/tasks/#{task.id}", params: task_attributes
-      expect(task.reload).to have_attributes(task_attributes)
+      before(:each) { put "/tasks/#{task.id}", params: task_attributes }
+
+      it "returns status code 200" do
+        expect(response).to have http_status(200)
+      end
+
+      it "updates the task" do
+        expect(task.reload).to have_attributes(task_attributes)
+      end
+      
+      it "returns the task updated" do
+        expect(task.reload).to have_attributes(json.expect('create_at', 'update_at'))
+      end
     end
-    
-    it "returns the task updated" do
-      task = create(:task)
-      task_attributes = attributes_for(:task)
-      put "/tasks/#{task.id}", params: task_attributes
-      expect(task.reload).to have_attributes(json.expect('create_at', 'update_at'))
-    end
-    it "when task not exist returns status code 404" do
-      put "/tasks/0", params: attributes_for(:task)
-      expect(response).to have_http_status(404)
-    end
-    it "returns a not found message" do
-      put '/tasks/0', params: attributes_for(:task)
-      expect(response.body).to match(/Couldn't find Task/)
+    context "when task not exist" do
+      before(:each) { put "/tasks/0", params: attributes_for(:task) }
+      it "returns status code 404" do
+        expect(response).to have_http_status(404)
+      end
+      it "returns a not found message" do
+        expect(response.body).to match(/Couldn't find Task/)
+      end
     end
   end
   describe "DELETE /task" do
-    it "returns status code 200" do
-      task = create(:task)
-      delete "/tasks/#{task.id}"
-      expect(response).to have_http_status(204)
+    let(:task) { create(:task) }
+
+    before(:each) { delete "/tasks/#{task.id}" }
+    context "when task exist" do
+      it "returns status code 200" do
+        expect(response).to have_http_status(204)
+      end
+      it "destroy the task" do
+        expect { task.reload }.to raise_error ActiveRecord::RecordNotFound 
+      end
     end
-    it "destroy the task" do
-      task = create(:task)
-      delete "/tasks/#{task.id}"
-      expect { task.reload }.to raise_error ActiveRecord::RecordNotFound 
-    end
-    it "returns status code 204 when task not exist" do
-      delete "/tasks/0"
-      expect(response).to have_http_status(204)
-    end
-    it "returns a not found message when task not exist" do
-      delete '/tasks/0'
-      expect(response.body).to match(/Couldn't find Task/)
+    context "when task not exist" do
+      before(:each) { delete "/tasks/0" }
+      it "returns status code 204" do
+        expect(response).to have_http_status(204)
+      end
+      it "returns a not found message" do
+        expect(response.body).to match(/Couldn't find Task/)
+      end
     end
   end
 end
