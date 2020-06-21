@@ -57,9 +57,7 @@ RSpec.describe "Tasks", type: :request do
       task = create(:task)
       task_attributes = attributes_for(:task)
       put "/tasks/#{task.id}", params: task_attributes
-
-      json_response = JSON.parse(response.body)
-      expect(task.reload).to have_attributes(json_response.expect('create_at', 'update_at'))
+      expect(task.reload).to have_attributes(json.expect('create_at', 'update_at'))
     end
     it "when task not exist returns status code 404" do
       put "/tasks/0", params: attributes_for(:task)
