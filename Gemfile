@@ -15,6 +15,7 @@ group :development, :test do
   gem 'capybara'
   gem 'rspec-rails'
   gem 'ffaker'
+  gem 'factory_bot_rails'
 end
 
 group :development do
