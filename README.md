@@ -56,10 +56,6 @@ Is possible to do:
 
 :heavy_check_mark: Delete all tasks
 
-## Deploy with Heroku 
-
-> https://test-rails-app-to-do.herokuapp.com/
-
 ## Layout
 
 <img src="https://user-images.githubusercontent.com/46378210/84402897-722d9980-abdb-11ea-80ee-7b7de2026744.png" width="400"/>
