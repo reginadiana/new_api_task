@@ -22,8 +22,7 @@ RSpec.describe "Tasks", type: :request do
   end
   describe 'PUSH /tasks' do
     it 'return ok status' do
-      task = { task: { title: 'Estudar React',
-                 done: true} }
+      task = { task: { title: 'Estudar React', done: true} }
       post '/tasks', params: task
       expect(response).to have_http_status(201)
     end
@@ -35,7 +34,7 @@ RSpec.describe "Tasks", type: :request do
     end
 
     it 'does not task valid' do
-      expect { post tasks_path, params: { task: {title: '', done: false} }}.to_not change(Task, :count)
+      expect { post tasks_path, params: { task: {title: '', done: false } }}.to_not change(Task, :count)
     end
   end
   describe "PUT /task" do

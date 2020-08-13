@@ -11,7 +11,7 @@ function CreateTask(props) {
      const handleSubmit = (async () => {
 
        if(title){
-	       await fetch(`https://test-rails-app-to-do.herokuapp.com/tasks`,
+	       await fetch(`http://localhost:3001/tasks`,
 		 {
 		   method: 'POST',
 		   headers: {

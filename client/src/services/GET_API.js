@@ -1,1 +1,1 @@
-//export const PATH_API = "https://test-rails-app-to-do.herokuapp.com/tasks/"
+export const BASE_URL = `http://localhost:3001/tasks/`
