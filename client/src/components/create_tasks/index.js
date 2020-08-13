@@ -5,31 +5,29 @@ import Form from 'react-bootstrap/Form';
 import './style.css'
    
 function CreateTask(props) {
-     const [title, setTitle] = useState('');
-     const [show, setShow] = useState('');
-   
-     const handleSubmit = (async () => {
-
-       if(title){
-	       await fetch(`http://localhost:3001/tasks`,
-		 {
-		   method: 'POST',
-		   headers: {
-		     'Accept': 'application/json',
-		     'Content-Type': 'application/json'
-		   },
-		   body: JSON.stringify({
-		     task: { title: title, done: false} 
-		   })
-		 }
-	       )
-	       setShow(false)
-	       setTitle('')
-	       props.loadTasks();
-      } else {
-	alert("Task cannot be blank");
-      }
-     });
+  const [title, setTitle] = useState('');
+  const [show, setShow] = useState('');
+  
+  const handleSubmit = (async () => {
+    if(title) {
+      await fetch(`http://localhost:3001/tasks`, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+          body: JSON.stringify({
+            task: { title: title, done: false }
+        })
+      })
+      
+      setShow(false)
+      setTitle('')
+      props.loadTasks();
+    } else {
+      alert("Task cannot be blank");
+    }
+  });
    
      return (
        <div>
