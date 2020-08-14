@@ -3,6 +3,7 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import './style.css'
+import { BASE_URL } from '../../services/GET_API'
    
 function CreateTask(props) {
   const [title, setTitle] = useState('');
@@ -10,7 +11,7 @@ function CreateTask(props) {
   
   const handleSubmit = (async () => {
     if(title) {
-      await fetch(`http://localhost:3001/tasks`, {
+      await fetch(BASE_URL, {
         method: 'POST',
         headers: {
           'Accept': 'application/json',

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './style.css'
+import { BASE_URL } from '../../services/GET_API'
+
 
 class CountTasks extends Component {
 	constructor(props) {
@@ -12,7 +14,7 @@ class CountTasks extends Component {
 	}
 	
 	async loadTasks() {
-		let response = await fetch(`http://localhost:3001/tasks`);
+		let response = await fetch(BASE_URL);
 		const tasks = await response.json();
 		this.setState({ tasks: tasks });
 		
