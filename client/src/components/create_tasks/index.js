@@ -2,24 +2,26 @@ import React, { useState } from "react";
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import Col from 'react-bootstrap/Col';
 import './style.css'
 import { BASE_URL } from '../../services/GET_API'
    
 function CreateTask(props) {
   const [title, setTitle] = useState('');
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState('');
   
   const handleSubmit = (async () => {
     if(title) {
-      const fetchResponse = await fetch(BASE_URL, {
+      await fetch(BASE_URL, {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         },
-          body: JSON.stringify({ task: { title: title, done: false } })
+          body: JSON.stringify({
+            task: { title: title, done: false }
+        })
       })
+      
       setShow(false)
       setTitle('')
       props.loadTasks();
@@ -28,22 +30,31 @@ function CreateTask(props) {
     }
   });
    
-  return (
-    <div>
-      <Form.Group>
-        <Form.Row>
-          <Col>
-            <Form.Control size="lg" type="text" placeholder="Write your new task ..." onChange={e => setTitle(e.target.value)}/>
-          </Col>
-          <Col xs="auto">
-            <Button type="submit" className="mb-2" onClick={e => handleSubmit()}>
-              Register
-            </Button>
-          </Col>
-        </Form.Row>
-      </Form.Group>
-    </div>
-  );
-}
+     return (
+       <div>
+         <Button onClick={e => setShow(true)} variant="dark" className="float-right create_task_btn">+ Tasks</Button>
    
-export default CreateTask;
+         <Modal show={show || false} onHide={e => setShow(false)} className="card-new-task">
+
+           <Modal.Header closeButton>
+             <Modal.Title>New Task</Modal.Title>
+           </Modal.Header>
+           <Modal.Body>
+             <Form.Control type="email" placeholder="Enter with your task..." value={title || ''} onChange={e => setTitle(e.target.value)} />
+           </Modal.Body>
+           <Modal.Footer>
+             <Button variant="secondary" onClick={e => setShow(false)}>
+               Close
+             </Button>
+             <form onSubmit={handleSubmit}>
+               <Button variant="dark" type="submit" className="button-create-task">
+                 Create
+               </Button>
+             </form>
+           </Modal.Footer>
+         </Modal>
+       </div>
+     );
+   }
+   
+   export default CreateTask;
