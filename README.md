@@ -84,23 +84,13 @@ Is possible to do:
 
 ## Requirements :package:
 
-Some resources should be installed before to setting the project
+You don't need to install any dependence, because the Docker will do this in a process in containers
 
-:warning: [Ruby](https://www.ruby-lang.org/pt/documentation/installation/) versão >=2.6.3
-
-:warning: [Ruby on Rails](https://guides.rubyonrails.org/getting_started.html) versão >=6.0.2.2
-
-:warning: [Node](https://nodejs.org/en/download/) versão >=10.13.0
-
-:warning: [Gem](https://rubygems.org/pages/download?locale=pt-BR) versão >=3.1.2
-
-:warning: [Bundle](https://bundler.io/man/bundle-install.1.html) versão >=2.1.2
-
-:warning: [Yarn](https://classic.yarnpkg.com/pt-BR/docs/install/#windows-stable) versão >=1.22.4 
+:books: [**Docker**](https://docs.docker.com/engine/install/ubuntu/) to run out app in containers.
 
 To check version, run:
 ```
-$ <name of requirement> -v
+$ docker -v 
 ```
 ## Settings
 
@@ -113,30 +103,29 @@ Acess the folder
 ```
 $ cd new_api_task
 ```
-Install the dependencies and prepare the database to **backend**
+Let's Docker build containers
 ```
+$ docker-compose build
+```
+
+Now, lets open bash:
+```
+$ docker-compose run --service-ports rails bash
+```
+To run **backend** with Rails:
+```
+$ gem install rails
 $ bin/setup
+$ rails s -b 0.0.0.0
 ```
-To setting **frontend**, run:
+
+To run **frontend** with React:
 ```
 $ cd client
-$ yarn install
+$ yarn start
 ```
 
-## Run application :arrow_forward:
-
-### Backend
-```
-$ cd .. # You should be in new_api_task folder
-$ rails s -p 3001
-```
-
-### Frontend
-
-```
-$ cd client
-$ yarn -cwd client start or yarn start
-```
+:warning: For a while, we can't to run both app in localhost in same tine. But, we can run just frontend and use th app, beacuse the data are deploy with Heroku [here](https://test-rails-app-to-do.herokuapp.com/tasks/)
 
 > Before, acess http://localhost:3000 to see application
 
