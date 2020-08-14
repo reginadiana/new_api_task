@@ -1,18 +1,19 @@
 require 'rails_helper'
 
 RSpec.describe Task, type: :model do
-	it('create a new task with sucess') do
-		title = FFaker::Name.first_name
-		done = %i[true false].sample
+  context 'create a new task' do
+    let(:done) { %i[true false].sample }
 
-		task = Task.new(title: title, done: done)
-		expect(task).to be_valid
-	end
+    it('with sucess') do
+      title = Faker::Lorem.sentence
+      task = Task.new(title: title, done: done)
 
-	it('task cannot be blank') do
-		done = %i[true false].sample
+      expect(task).to be_valid
+    end
 
-		task = Task.new(title: " ", done: done)
-		expect(task).to_not be_valid
-	end
+    it('and must be blank') do
+      task = Task.new(title: '', done: done)
+      expect(task).to_not be_valid
+    end
+  end
 end
