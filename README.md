@@ -125,7 +125,7 @@ $ cd client
 $ yarn start
 ```
 
-:waring: For a while, we can't to run both app in localhost in same tine. But, we can run just frontend and use th app, beacuse the data are deploy with Heroku [here](https://test-rails-app-to-do.herokuapp.com/tasks/)
+:warning: For a while, we can't to run both app in localhost in same tine. But, we can run just frontend and use th app, beacuse the data are deploy with Heroku [here](https://test-rails-app-to-do.herokuapp.com/tasks/)
 
 > Before, acess http://localhost:3000 to see application
 
