@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
@@ -8,20 +7,17 @@ import { BASE_URL } from '../../services/GET_API'
    
 function CreateTask(props) {
   const [title, setTitle] = useState('');
-  const [show, setShow] = useState(false);
+  
+  const headers = {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+  }
   
   const handleSubmit = (async () => {
+    const content = JSON.stringify({ task: { title: title, done: false } })
     if(title) {
-      const fetchResponse = await fetch(BASE_URL, {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-          body: JSON.stringify({ task: { title: title, done: false } })
-      })
-      setShow(false)
-      setTitle('')
+      await fetch(BASE_URL, { method: 'POST', headers: headers, body: content })
+      setTitle('');
       props.loadTasks();
     } else {
       alert("Task cannot be blank");
