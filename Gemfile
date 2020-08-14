@@ -14,8 +14,9 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara'
   gem 'rspec-rails'
-  gem 'ffaker'
+  gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
   gem 'factory_bot_rails'
+  gem 'rubocop', require: false
 end
 
 group :development do
