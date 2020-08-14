@@ -22,7 +22,7 @@ RSpec.describe "Tasks", type: :request do
   end
   describe 'PUSH /tasks' do
     it 'return ok status' do
-      task = { task: { title: 'Estudar React', done: true} }
+      task = { task: { title: 'Estudar React', done: true } }
       post '/tasks', params: task
       expect(response).to have_http_status(201)
     end
@@ -41,19 +41,18 @@ RSpec.describe "Tasks", type: :request do
     context "task exist and" do
       let(:task) { create(:task) }
       let(:task_attributes) { attributes_for(:task) }
-
-      before(:each) { put "/tasks/#{task.id}", params: task_attributes }
+      
+      before(:each) do 
+        task_params = { task: task_attributes }
+        put "/tasks/#{task.id}", params: task_params
+      end
 
       it "returns status code 200" do
-        expect(response).to have http_status(200)
+        expect(response).to have_http_status(:ok)
       end
 
       it "updates the task" do
         expect(task.reload).to have_attributes(task_attributes)
-      end
-      
-      it "returns the task updated" do
-        expect(task.reload).to have_attributes(json.expect('create_at', 'update_at'))
       end
     end
     context "when task not exist" do
@@ -70,6 +69,7 @@ RSpec.describe "Tasks", type: :request do
     let(:task) { create(:task) }
 
     before(:each) { delete "/tasks/#{task.id}" }
+
     context "when task exist" do
       it "returns status code 200" do
         expect(response).to have_http_status(204)
@@ -78,13 +78,10 @@ RSpec.describe "Tasks", type: :request do
         expect { task.reload }.to raise_error ActiveRecord::RecordNotFound 
       end
     end
+
     context "when task not exist" do
-      before(:each) { delete "/tasks/0" }
       it "returns status code 204" do
-        expect(response).to have_http_status(204)
-      end
-      it "returns a not found message" do
-        expect(response.body).to match(/Couldn't find Task/)
+        expect(response).to have_http_status(:no_content)
       end
     end
   end
