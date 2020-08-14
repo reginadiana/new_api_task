@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './style.css'
 import { BASE_URL } from '../../services/GET_API'
 
-
 class CountTasks extends Component {
 	constructor(props) {
     	super(props);
