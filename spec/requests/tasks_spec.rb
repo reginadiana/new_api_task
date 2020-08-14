@@ -71,7 +71,7 @@ RSpec.describe "Tasks", type: :request do
     before(:each) { delete "/tasks/#{task.id}" }
 
     context "when task exist" do
-      it "returns status code 200" do
+      it "returns status code 204" do
         expect(response).to have_http_status(204)
       end
       it "destroy the task" do
