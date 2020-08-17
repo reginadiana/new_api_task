@@ -1,9 +1,15 @@
 version: '3'
 services:
+  react:
+    build: ./client
+    command: yarn start
+    container_name: frontend_react
+    ports:
+      - 3001:3001
   rails:
     build: .
     command: rails s -b 0.0.0.0
-    container_name: new_tasks
+    container_name: backend_rails
     ports:
       - 3000:3000
     volumes:
@@ -20,6 +26,7 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     volumes:
-      - new_tasks:/var/lib/postgresql/data
+      - backend_rails:/var/lib/postgresql/data
 volumes:
-  new_tasks:
+  backend_rails:
+  frontend_react:
