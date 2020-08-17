@@ -1,7 +1,7 @@
 version: '3'
 services:
   react:
-    build: .
+    build: ./client
     command: yarn start
     container_name: new_tasks_frontend
     ports:
