@@ -1,5 +1,11 @@
 version: '3'
 services:
+  react:
+    build: .
+    command: yarn start
+    container_name: new_tasks_frontend
+    ports:
+      - 3001:3001
   rails:
     build: .
     command: rails s -b 0.0.0.0
@@ -23,3 +29,4 @@ services:
       - new_tasks:/var/lib/postgresql/data
 volumes:
   new_tasks:
+  new_tasks_frontend:
