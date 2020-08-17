@@ -1,11 +1,14 @@
 version: '3'
 services:
   react:
-    build: ./client
-    command: yarn start
-    container_name: new_tasks_frontend
+    build: .
+    working_dir: /opt/app/client
+    command: bash -c "yarn install && yarn start"  # script que faz yarn install + start
     ports:
       - 3001:3001
+    stdin_open: true
+    volumes:
+      - ./client/:/opt/app/client
   rails:
     build: .
     command: rails s -b 0.0.0.0
@@ -29,4 +32,3 @@ services:
       - new_tasks:/var/lib/postgresql/data
 volumes:
   new_tasks:
-  new_tasks_frontend:
