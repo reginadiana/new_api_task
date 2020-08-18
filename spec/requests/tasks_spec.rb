@@ -2,35 +2,35 @@ require 'rails_helper'
 
 RSpec.describe "Tasks", type: :request do
   describe "GET /tasks" do
-    it "works! (now write some real specs)" do
+    it "request successfully" do
       get tasks_path
-      expect(response).to have_http_status(200)
+      expect(response).to have_http_status(:ok)
     end
 
     it 'return all tasks' do
-      another_task = Task.create(title: 'Participar da Semana Super Full Stack (29/04 - 05/05)', done: false)
-      task = Task.create(title: 'Ler os artigo do OneBitCode sobre React', done: true)
-      task_attributes = FactoryBot.attributes_for(:task)
-      get '/tasks'
+      task = create_task
+      another_task = create_task
+      get tasks_path
 
-      expect(Task.last).to have_attributes(task_attributes)
-      expect(task.done).to eq true
-      expect(response.body).to include task.title
-      expect(response.body).to include another_task.title
-      expect(another_task.done).to eq false
+      expect(response_json[0]['title']).to eq task.title
+      expect(response_json[0]['done']).to eq task.done
+      expect(response_json[1]['title']).to eq another_task.title
+      expect(response_json[1]['done']).to eq another_task.done
     end
   end
   describe 'PUSH /tasks' do
     it 'return ok status' do
       task = { task: { title: 'Estudar React', done: true } }
-      post '/tasks', params: task
-      expect(response).to have_http_status(201)
+      post tasks_path, params: task
+      expect(response).to have_http_status(:created)
     end
 
     it 'create task with valid params' do
       task_attributes = FactoryBot.attributes_for(:task)
       post tasks_path, params: { task: task_attributes }
-      expect(Task.last).to have_attributes(task_attributes)
+    
+      expect(response_json['title']).to eq task_attributes[:title]
+      expect(response_json['done'].to_s).to eq task_attributes[:done].to_s
     end
 
     it 'does not task valid' do
@@ -52,13 +52,14 @@ RSpec.describe "Tasks", type: :request do
       end
 
       it "updates the task" do
-        expect(task.reload).to have_attributes(task_attributes)
+        expect(task.reload.title).to eq task_attributes[:title]
+        expect(task.reload.done.to_s).to eq task_attributes[:done].to_s
       end
     end
     context "when task not exist" do
       before(:each) { put "/tasks/0", params: attributes_for(:task) }
       it "returns status code 404" do
-        expect(response).to have_http_status(404)
+        expect(response).to have_http_status(:not_found)
       end
       it "returns a not found message" do
         expect(response.body).to match(/Couldn't find Task/)
@@ -72,7 +73,7 @@ RSpec.describe "Tasks", type: :request do
 
     context "when task exist" do
       it "returns status code 204" do
-        expect(response).to have_http_status(204)
+        expect(response).to have_http_status(:no_content)
       end
       it "destroy the task" do
         expect { task.reload }.to raise_error ActiveRecord::RecordNotFound 
