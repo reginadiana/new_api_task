@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Requests
   module JsonHelpers
     def response_json
@@ -9,7 +11,7 @@ module Requests
     end
 
     def done
-      %i[true false].sample
+      Faker::Boolean.boolean
     end
 
     def create_task

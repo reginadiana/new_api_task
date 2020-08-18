@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "Tasks", type: :request do
-  describe "GET /tasks" do
-    it "request successfully" do
+RSpec.describe 'Tasks', type: :request do
+  describe 'GET /tasks' do
+    it 'request successfully' do
       get tasks_path
       expect(response).to have_http_status(:ok)
     end
@@ -28,60 +30,60 @@ RSpec.describe "Tasks", type: :request do
     it 'create task with valid params' do
       task_attributes = FactoryBot.attributes_for(:task)
       post tasks_path, params: { task: task_attributes }
-    
+
       expect(response_json['title']).to eq task_attributes[:title]
       expect(response_json['done'].to_s).to eq task_attributes[:done].to_s
     end
 
     it 'does not task valid' do
-      expect { post tasks_path, params: { task: {title: '', done: false } }}.to_not change(Task, :count)
+      expect { post tasks_path, params: { task: { title: '', done: false } } }.to_not change(Task, :count)
     end
   end
-  describe "PUT /task" do
-    context "task exist and" do
+  describe 'PUT /task' do
+    context 'task exist and' do
       let(:task) { create(:task) }
       let(:task_attributes) { attributes_for(:task) }
-      
-      before(:each) do 
+
+      before(:each) do
         task_params = { task: task_attributes }
         put "/tasks/#{task.id}", params: task_params
       end
 
-      it "returns status code 200" do
+      it 'returns status code 200' do
         expect(response).to have_http_status(:ok)
       end
 
-      it "updates the task" do
+      it 'updates the task' do
         expect(task.reload.title).to eq task_attributes[:title]
         expect(task.reload.done.to_s).to eq task_attributes[:done].to_s
       end
     end
-    context "when task not exist" do
-      before(:each) { put "/tasks/0", params: attributes_for(:task) }
-      it "returns status code 404" do
+    context 'when task not exist' do
+      before(:each) { put '/tasks/0', params: attributes_for(:task) }
+      it 'returns status code 404' do
         expect(response).to have_http_status(:not_found)
       end
-      it "returns a not found message" do
+      it 'returns a not found message' do
         expect(response.body).to match(/Couldn't find Task/)
       end
     end
   end
-  describe "DELETE /task" do
+  describe 'DELETE /task' do
     let(:task) { create(:task) }
 
     before(:each) { delete "/tasks/#{task.id}" }
 
-    context "when task exist" do
-      it "returns status code 204" do
+    context 'when task exist' do
+      it 'returns status code 204' do
         expect(response).to have_http_status(:no_content)
       end
-      it "destroy the task" do
-        expect { task.reload }.to raise_error ActiveRecord::RecordNotFound 
+      it 'destroy the task' do
+        expect { task.reload }.to raise_error ActiveRecord::RecordNotFound
       end
     end
 
-    context "when task not exist" do
-      it "returns status code 204" do
+    context 'when task not exist' do
+      it 'returns status code 204' do
         expect(response).to have_http_status(:no_content)
       end
     end
