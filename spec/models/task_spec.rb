@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Task, type: :model do
   context 'create a new task' do
-    let(:done) { %i[true false].sample }
+    let(:done) { Faker::Boolean.boolean }
 
     it('with sucess') do
       title = Faker::Lorem.sentence

@@ -2,7 +2,7 @@
 
 class TasksController < ApplicationController
   before_action :set_task, only: %i[update destroy]
-  
+
   def index
     @tasks = Task.all
     render json: @tasks

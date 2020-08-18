@@ -3,6 +3,6 @@
 FactoryBot.define do
   factory :task do
     title { Faker::Lorem.sentence }
-    done { %i[true false].sample }
+    done { Faker::Boolean.boolean }
   end
 end
