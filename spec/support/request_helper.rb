@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 module Requests
   module JsonHelpers
-    def json
+    def response_json
       JSON.parse(response.body)
     end
 
@@ -9,7 +11,7 @@ module Requests
     end
 
     def done
-      %i[true false].sample
+      Faker::Boolean.boolean
     end
 
     def create_task

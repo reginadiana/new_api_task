@@ -105,10 +105,10 @@ $ cd new_api_task
 ```
 Let's Docker build containers
 ```
-$ docker-compose build
+$ docker-compose build && docker-compose up
 ```
 
-Now, lets open bash:
+If want, can lets open bash:
 ```
 $ docker-compose run --service-ports rails bash
 ```
@@ -125,9 +125,7 @@ $ cd client
 $ yarn start
 ```
 
-:warning: For a while, we can't to run both app in localhost in same tine. But, we can run just frontend and use th app, beacuse the data are deploy with Heroku [here](https://test-rails-app-to-do.herokuapp.com/tasks/)
-
-> Before, acess http://localhost:3000 to see application
+> Before, acess http://localhost:3001 to see application
 
 :warning: Attention: The React application is request API from path `https://test-rails-app-to-do.herokuapp.com/tasks`. If you want to **change** the path local, you can change this path in all components as [example](https://github.com/reginadiana/new_api_task/blob/add-license-1/client/src/components/list/index.js):
 

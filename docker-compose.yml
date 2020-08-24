@@ -1,11 +1,14 @@
 version: '3'
 services:
   react:
-    build: ./client
-    command: yarn start
-    container_name: frontend_react
+    build: .
+    working_dir: /opt/app/client
+    command: bash -c "yarn install && yarn start" 
     ports:
       - 3001:3001
+    stdin_open: true
+    volumes:
+      - ./client/:/opt/app/client
   rails:
     build: .
     command: rails s -b 0.0.0.0
